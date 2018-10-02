@@ -4,7 +4,7 @@ spring:
     config:
       server:
         git:
-          uri: https://github.com/sundeeppahariya/spring-cloud-microservice
+          uri: https://github.com/sundeeppahariya/spring-cloud-microservice.git
           searchPaths: apps-configurations-files
         # "native" is used when the native profile is active, for local tests with a classpath repo:
         native:
