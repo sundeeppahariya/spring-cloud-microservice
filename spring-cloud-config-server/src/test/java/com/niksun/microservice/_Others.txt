@@ -1,0 +1,91 @@
+Troubleshoot Production performance issue in Web application
+https://www.youtube.com/watch?v=qohM73LFd7A
+
+Java Memory Leak Detection with JProfiler
+https://www.youtube.com/watch?v=Dy7WZv5bEV4
+
+####Otherwise we should use some other tools that are do memory management to identify useless objects or memory leak, like :
+HP OVO
+HP J METER
+JProbe
+IBM Tivoli
+
+####A memory leak in java (who would've though heh?) can occur if you forgot to close a resource, or a reference to an object is not related. e.g.
+
+File/Text buffers not closed. (as was in my case)
+Hashmaps keeping reference alive if equals() and hashcode() are not implemented.
+Inner classes that reference outer class can leak.(make them static to avoid).
+
+how would you manage the load of your application?
+how would you design the s/w?
+JMeter - https://www.youtube.com/watch?v=jniUkTAW6TY
+
+HLD - Project Architecture
+LLD
+
+HLD - How components are organized and assembled.
+LLD - Design pattern and how components are built.
+
+load balancing - https://www.youtube.com/watch?v=pAlbyF-5Gto
+req response flow - security, output format, interceptor - https://www.youtube.com/watch?v=7aDKKKZzHxU
+How to Deploy Web App into Azure - https://www.youtube.com/watch?v=qrC0JPDYCnw
+
+CI-CD pipelines
+oauth (open authorization) - https://www.youtube.com/watch?v=zUG6BHgJR9w
+stored procedure
+distributed architecture
+microservices - 
+
+****Scrum - https://www.youtube.com/watch?v=9TycLR0TqFA
+
+Agile - https://www.youtube.com/watch?v=cWQrJ7DGgXA&list=PLWPirh4EWFpF8LjfSxHPuTnyNhqhe4XDc&index=1
+---------------------------------------------------------------------------------------------------
+
+Question 1. Explain what if your client ask to work on a project outside the specialization ? 
+
+Answer : if you and your colleagues don't have skills, who can work on a project that your client demanded it's better to deny by telling that the project requires
+experties, and you don't have the bandwidth. To give a good impression to your client, you can even offer your client to help him/her find someone to do this work.
+
+Question 2. Tell us what will be your reaction if a project you had been trackling is suddenly changed or the deadline moved ?
+
+Answer : The first thing would be to ensured that I have all the facts of these changes as genuine reason before I can inform my team members. 
+With everyone aware of the changes, I will have to talk to the teammates and discuss a new way forward that works for all of them.
+
+Question 3. What will be your reaction if an external candidate is hired in your place for this internal position?
+
+Answer : I would appreciate the oppertunity to serve in this internal position within my company. If it does not happen though, I am still committed to seeing our 
+company progress and achieve its objective. If not selected, I will definitely work with and offer my full support to whoever might get the chance. I will also
+continue looking for any other better position in the field that matches my experience and objectives.
+
+Question 4. How would you handle a conflict between team members?
+Answer : I understand that there will always be two sides of a story. This realization makes it possible for me to stay neutral and have an open-mind when handling any
+conflict between teammates. A few years ago I had to sort out a conflict where two of my team members were not in terms with each other. I couldn't risk ignoring it, and 
+assuming they would sort it out themselves. Instead, I sat them down individually and asked for an explanation. After discussion, we arrived at a reasonable as well as
+professional solution that was acceptable for both parties. This is how, I managed to fix the matter.
+
+Question 5. Give us an example of one tough decision you had to make ?
+
+Answer : I believe that the good of the company should always come firstbefore personal feelings. So, sometime back, I was faced with a scenario where I was supposed
+to hire a new team member to work on a major project for our company. I narrowed down the selection to 2 qualified candidates. One was a new hire that seemed like an
+excellent fit for the job, and the other one was an, established employee that may not have been the right fit for that particular position. The problem was, I considered
+him a personal friend. Naturally, I would prefer hiring my friend, but it wouldn't have made sense for the company, hence I ended up hiring the newcomer. When my
+friend inquired about it, I explained clearly. This led to a discussion of other oppertunities that were excellent for him. I can say that this was not an easy 
+decision then, but all means it was a correct move that I would repeat.
+
+----------------------------------------------------------------------------------------------
+
+Profiling Java Code with Jprofile - 
+https://www.youtube.com/watch?v=X5iPhGIswlI
+
+Finding a memory leak with JProfiler - 
+https://www.youtube.com/watch?v=032aTGa-1XM
+
+Coding to avoid memory leak
+----------------------------------------------------------------------------------------------
+Web Application Performance 101 - 
+https://www.youtube.com/watch?v=QF1dYG_JPOo
+
+How to Create Cloud Service On Microsoft Azure - 
+https://www.youtube.com/watch?v=a8MGMsPxLTI
+
+https://www.youtube.com/watch?v=rpPANKhbpDs

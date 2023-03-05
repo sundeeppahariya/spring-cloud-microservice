@@ -1,0 +1,597 @@
+JDK, JRE and JVM - 
+
+JDK provides environment to development and run java application (ex:Development Team).
+JRE provides environment to run java program (ex:Client).
+JVM is responsible to run java program in JRE line by line (interpreter).
+    its is an abstract machine. It is called a virtual machine because it doesn't physically exist. 
+    JVMs are available for many hardware and software platforms. JVM, JRE, and JDK are platform dependent because the configuration of each OS is different from each     
+other. However, Java is platform independent. There are three notions of the JVM: specification, implementation, and instance.
+
+    The JVM performs the following main tasks:
+
+    Loads code
+    Verifies code
+    Executes code
+    Provides runtime environment
+
+	JDK
+---------------------------------
+|				 |
+|JRE				 |	
+|-----------------		 |
+|--------	  |		 |
+|JVM	|+Library | + Development|
+|------	|Classes  |   Tools	 |
+|-----------------|		 |
+|				 |
+---------------------------------
+
+JVM internal architecture - 
+https://www.youtube.com/watch?v=4MHQa1mw7J0
+https://www.javatpoint.com/internal-details-of-jvm
+
+It contains classloader, memory area, execution engine etc.
+-----------------------------------------------------------
+OOPS-
+coupling and cohesion - https://www.youtube.com/watch?v=X1N51hhLiyw
+You can use interfaces for weak coupling.
+
+Cohesion - 
+
+Cohesion refers to the level of a component which performs a single well-defined task.
+
+The java.io package is highly cohesive package because it has I/O related classes and interfaces. However, the java.util packages is weakly cohesive package because 
+it has unrelated classes and interfaces.
+
+Data Hiding - Outside person should not access our data directly or our internal data should not go outside directly.
+After validation or authentication, outside person can access our internal data.
+Ex: login after providing proper userid and password
+-----------------------------------------------------------
+Abstraction - show only necessary things without highlighting inetrnal implementation.
+Ex: ATM
+We can implement abstraction - abstract classes and interface.
+-----------------------------------------------------------
+Encapsulation - Bind data and method together.
+Ex: Class
+Encapsulation = Data Hiding + Abstraction
+Tightly Encapsulated Class - which has all it member variable as private.
+-----------------------------------------------------------
+Is-A relationship/Inheritance - class A extends B
+				used for code reusablitiy.
+
+Ex: Class P{
+	m1(){
+	 SOP("Hi");
+	}
+    }
+    Class C extends P{
+	m2(){
+	 SOP("Hello");
+	}
+    }
+
+P p1 = new C();
+p1.m1();------------------------Accepted
+p1.m2();------------------------Exception
+
+By using parent class reference, we can call methods available only in parent class, not in child class.
+
+C c1 = new P();-----------------Incompitible type exception
+
+Object class is the root class for all java class.
+
+Multiple inheritance not supported in java due to ambiguity problem.
+
+Has-A relation - also known as composition or aggregation.
+There is no specific keyword to implement has-a relationship.
+create object and make it available to use.
+
+composition - strong assosiation of container object and contained object.
+Ex: College and its different departments.
+
+aggregation - weak assosiation of container object and contained object.
+Ex: departments and its different teachers.
+If deartment is closed then teachers would move to other department.
+
+with in a  class two methods with the same signature-not allowed, even return type is different.
+
+Overloading-same mehod name with different argumets (signature).
+In overloading, method resolution is always take care by comipler based on refernce type.-so compile time/static/early binding polymorphism
+
+Overriding - redefine the method in the child class as per its requirement.
+P p1 = new C();
+p1.m();
+
+first compiler will check if m() method is available in Parent class or not, if yes then it will check if m() method has been overridden in child class or not.
+if yes, then it will execute the child class m() method. if not then since m() method is coming in child thru inheritance so it will execute parent class method.
+
+in Overriding return type must be same. But this rule is applicable until 1.4 version only.
+From 1.5 version onwards, we can take co-variant return types. According to this child class method return type need not be same as parent method return type.
+co-variant return type concept applicable only for object types not for premitive (int, double etc..) type.
+
+Overriding concept not applicable to private methdos, because parent private methods are not available to child.
+Parent class abstract method must be overridden in child class.
+while overriding, scope of access modifier, we can't reduce.
+Note: We can not override non static method as static in child class.
+If both, parent and child class methods are static then we won't get any complile time error. It seems overriding concept applicable for static methods,but it is not overriding and it is method hiding.
+-----------------------------------------------------------
+Que:When we should go for parent object to hold child object ?
+Ans:If we don't know exact run time, type of object.
+-----------------------------------------------------------
+Type Casting - converting object from one type to another.
+Thru type casting, we don't create new object, just assign new refrence to older one.
+-----------------------------------------------------------
+Static Control Flow in Java - https://www.geeksforgeeks.org/static-control-flow-in-java/
+
+Static block in java - https://www.youtube.com/watch?v=yvQsLZSPGBQ
+Static block has no name (no idendity)
+#We can not call explicitly (since no name).
+#JVM executes static block at the time of class loading.
+#Executes, before main method.
+-----------------------------------------------------------
+Constructor - it is the member funtion with the same name as class name.
+constructor is used for initialization.
+No return type, because it is used to provide the memory and there is no type of memory.
+
+Role of Private Constructor
+If you make any class constructor private, you cannot create the instance of that class from outside the class. For example:
+
+Constructors overloading vs Method overloading
+
+Strictly speaking, constructor overloading is somewhat similar to method overloading. If we want to have different ways of initializing an object using different number of parameters, then we must do constructor overloading as we do method overloading when we want different definitions of a method based on different parameters.
+-----------------------------------------------------------
+Singleton class-one object (an instance of the class) at a time.
+
+// Java program implementing Singleton class 
+// with getInstance() method 
+class Singleton 
+{ 
+ static Singleton obj = new Singleton();
+
+ private Singleton(){
+ 
+ }
+ public static Singleton getInstance(){
+	return obj;
+ }
+	
+} 
+
+// Driver Class 
+public class Main
+{ 
+	public static void main(String args[]) 
+	{ 
+	// instantiating Singleton class with variable x 
+	Singleton x = Singleton.getInstance(); 		
+	} 
+} 
+-----------------------------------------------------------
+This keyword - ‘this’ is a reference variable that refers to the current object.
+https://www.geeksforgeeks.org/this-reference-in-java/
+
+Super keyword - The super keyword in java is a reference variable that is used to refer parent class objects.  
+https://www.geeksforgeeks.org/super-keyword/
+-----------------------------------------------------------
+Instance Initialization Block (IIB) - In a Java program, operations can be performed on methods, constructors and initialization blocks. Instance Initialization Blocks or IIB are used to initialize instance variables. IIBs are executed before constructors. They run each time when object of the class is created.
+https://www.geeksforgeeks.org/instance-initialization-block-iib-java/
+-----------------------------------------------------------
+static and dynamic binding in java-
+Static Binding: The binding which can be resolved at compile time by compiler is known as static or early binding. Binding of all the static, private and final methods is done at compile-time .
+Dynamic Binding: In Dynamic binding compiler doesn’t decide the method to be called. Overriding is a perfect example of dynamic binding. In overriding both parent and child classes have same method. 
+-----------------------------------------------------------
+Note:
+Dog d=new Animal();//Compilation error 
+
+ 
+#If we perform downcasting by typecasting, ClassCastException is thrown at runtime
+ Dog d=(Dog)new Animal();  
+//Compiles successfully but ClassCastException is thrown at runtime  
+-----------------------------------------------------------
+Abstract class - if a class has at least one pure virtual function, then the class becomes abstract. 
+https://www.youtube.com/watch?v=HiGYQofy1Lc
+
+Interface - An interface in java is a blueprint of a class. It has static constants and abstract methods.
+Java Interface also represents the IS-A relationship.
+It cannot be instantiated just like the abstract class.
+-----------------------------------------------------------
+Java Package - A java package is a group of similar types of classes, interfaces and sub-packages.
+There are many built-in packages such as java, lang, awt, javax, swing, net, io, util, sql etc.
+-----------------------------------------------------------
+Access Modifiers - we don't have acess specifiers in Java.
+Class - Public,  Final, Abstract.
+Private class - only inner class
+-----------------------------------------------------------
+Array - it is an object which contains elements of a similar data type. 
+int a[]=new int[5];//declaration and instantiation 
+
+Advantages:
+Code Optimization: It makes the code optimized, we can retrieve or sort the data efficiently.
+Random access: We can get any data located at an index position.
+
+Disadvantage - Size Limit: We can store only the fixed size of elements in the array. It doesn't grow its size at runtime. To solve this problem, collection framework is used in Java which grows automatically.
+
+Copying a Java Array - Object src, int srcPos,Object dest, int destPos, int length
+//Copy element of a[] to b[]
+System.arraycopy(a, 0, b, 0, 3);
+-----------------------------------------------------------
+Object class - Object class is the parent class of all the classes in java by default.
+The Object class is beneficial if you want to refer any object whose type you don't know.
+Methods of Object class - 
+hashCode(),equals(Object obj),clone(),toString(),notify(),notifyAll(),wait(),finalize().
+-----------------------------------------------------------
+Object Cloning - 
+Theory - https://www.youtube.com/watch?v=b2uFL4BFDYg
+Practical:
+https://www.youtube.com/watch?v=WIh-TVq4ifI
+https://www.youtube.com/watch?v=KWbr7B5LDzs&list=PLsyeobzWxl7p4FxA2_sNM0cswUWC-QcfJ&index=3
+
+example - https://www.javatpoint.com/object-cloning
+
+Disadvantage of Object cloning - To use the Object.clone() method, we have to change a lot of syntaxes to our code, like implementing a Cloneable interface, defining the clone() method and handling CloneNotSupportedException, and finally, calling Object.clone() etc.
+-----------------------------------------------------------
+Wrapper class in java provides the mechanism to convert primitive into object and object into primitive.
+Custom wraper classe in Java - https://www.javatpoint.com/wraper-classe-in-java
+Since J2SE 5.0, autoboxing and unboxing feature converts primitive into object and object into primitive automatically. 
+int i = 5;
+Integer ii = new Integer(i); //Boxing
+int jj = i; //AutoBoxing
+
+int j = jj.intValue(); //Unboxing
+int k = jj; //AutoUnboxing
+
+Wrapper classes concept is used in collection.
+ArrayList<Integer> arr = new ArrayList<Interger>();
+arr.add(5);
+arr.add(2);
+arr.add("Nikhil"); //won't allow
+-----------------------------------------------------------
+There is only call by value in java, not call by reference.If we call a method passing a value, it is known as call by value. The changes being done in the called method, is not affected in the calling method.
+-----------------------------------------------------------
+Difference between method overloading and method overriding in java:
+https://www.javatpoint.com/method-overloading-vs-method-overriding-in-java
+-----------------------------------------------------------
+String - string is basically an object that represents sequence of char values.
+Methods in String class - compare(), concat(), equals(), split(), length(), replace(), compareTo(), intern(), substring() etc.
+The java.lang.String class implements Serializable, Comparable and CharSequence interfaces.
+
+The Java String is immutable which means it cannot be changed. Whenever we change any string, a new instance is created. For mutable strings, you can use StringBuffer and StringBuilder classes.
+
+There are two ways to create String object:
+By string literal
+By new keyword
+
+Note: String objects are stored in a special memory area known as the "string constant pool".
+
+String s=new String("Welcome");
+In above case, JVM will create a new string object in normal (non-pool) heap memory, and the literal "Welcome" will be placed in the string constant pool. The variable s will refer to the object in a heap (non-pool).
+
+Que:Why String is Immutable ?
+Ans:https://www.youtube.com/watch?v=5OXc-TsM3bg
+
+String compare: three ways
+1.By equals() method - compares the original content of the string.
+2.By == operator - compares references not values.
+3.By compareTo() method - ompares values lexicographically
+Ex:Suppose s1 and s2 are two string variables. If:
+s1 == s2 :0
+s1 > s2   :positive value
+s1 < s2   :negative value
+
+class Teststringcomparison4{  
+ public static void main(String args[]){  
+   String s1="Sachin";  
+   String s2="Sachin";  
+   String s3="Ratan";  
+   System.out.println(s1.compareTo(s2));//0  
+   System.out.println(s1.compareTo(s3));//1(because s1>s3)  
+   System.out.println(s3.compareTo(s1));//-1(because s3 < s1 )  
+ }  
+}  
+
+Output:0
+       1
+      -1
+
+Substring - String s="hello";  
+	    System.out.println(s.substring(0,2));//he  
+-----------------------------------------------------------
+String valueOf() :convert int to string	
+int a=10;  
+String s=String.valueOf(a);  
+-----------------------------------------------------------
+StringBuffer - StringBuffer class is used to create mutable (modifiable) string. And it is thread-safe.
+StringBuilder - StringBuilder class is used to create mutable (modifiable) string. And it is not thread-safe.
+
+String class overrides the equals() method of Object class. So you can compare the contents of two strings by equals() method.
+StringBuffer class doesn't override the equals() method of Object class.
+-----------------------------------------------------------
+All the wrapper classes are immutable class.
+
+Que:How to create Immutable class?
+Ans:1.Declare class as final.
+    2.All member variable should be private and final.
+    3.Initialize all variables only thru constructor.
+    4.No setter method, instead of this use constructor. - So its value can not be changed once created.
+    5.Only getter method.
+Ex:
+public final class Employee{  
+final String pancardNumber;  
+  
+public Employee(String pancardNumber){  
+this.pancardNumber=pancardNumber;  
+}  
+  
+public String getPancardNumber(){  
+return pancardNumber;  
+}    
+}  
+-----------------------------------------------------------
+toString()-represent any object as a string.
+-----------------------------------------------------------
+Exception - An exception is an event that disrupts the normal flow of the program. It is an object which is thrown at runtime.
+Exception is the super class of all types of exception.
+Hierarchy of Java Exception classes - https://www.javatpoint.com/exception-handling-in-java
+Exception Handling - The Exception Handling in Java is one of the powerful mechanism to handle the runtime errors so that normal flow of the application can be maintained.
+
+Types of Java Exceptions - 
+1.Checked Exception-Checked exceptions are checked at compile-time. e.g. IOException, SQLException etc.
+
+Rule: By default, Checked Exceptions are not forwarded in calling chain (propagated).
+
+2.Unchecked Exception-Unchecked exceptions are not checked at compile-time, but they are checked at runtime. e.g. ArithmeticException, NullPointerException, ArrayIndexOutOfBoundsException etc.
+3.Error-Error is irrecoverable e.g. OutOfMemoryError, VirtualMachineError, AssertionError etc.
+
+How to deal with the OutOfMemoryError - https://examples.javacodegeeks.com/java-basics/exceptions/java-lang-outofmemoryerror-how-to-solve-outofmemoryerror/
+
+Exception Keywords-
+try
+catch
+finally-The "finally" block is used to execute the important code of the program. It is executed whether an exception is handled or not.
+throw-The "throw" keyword is used to throw an exception.
+throws-The "throws" keyword is used to declare exceptions. It doesn't throw an exception. It specifies that there may occur an exception in the method. It is always used with method signature.
+
+Always write your cath in asc. oreder (child first then parent).
+
+Try with Resources - Resources are introduced in java 1.7 and later. Resource should write in try as a parameter. And then no need to write catch and finally block along with the try block.
+
+Java try-with-resources, is an exception handling mechanism that makes it possible to automatically close resources like an InputStream or a JDBC Connection when you are done with them. 
+To do so, you must open and use the resource within a Java try-with-resources block. 
+When the execution leaves the try-with-resources block, any resource opened within the try-with-resources block is automatically closed, regardless of whether any exceptions are thrown either from inside the try-with-resources block, or when attempting to close the resources.
+Ex:
+private static void printFile() throws IOException {
+
+    try(FileInputStream input = new FileInputStream("file.txt");
+	BufferedInputStream bufferedInput = new BufferedInputStream(input)) {
+
+        int data = input.read();
+        while(data != -1){
+            System.out.print((char) data);
+            data = input.read();
+        }
+    }
+}
+
+Throws - throws keyword is used to declare an exception. when don't want to handle the exception then use throws.
+Rule: If you are calling a method that throws/declares an exception, you must either caught or declare the exception.
+
+Throw - The Java throw keyword is used to explicitly throw an exception.
+
+Rule: For each try block there can be zero or more catch blocks, but only one finally block.
+Note: The finally block will not be executed if program exits(either by calling System.exit() or by causing a fatal error that causes the process to abort).
+-----------------------------------------------------------
+Final is a keyword.	Finally is a block.	Finalize is a method.
+-----------------------------------------------------------
+ExceptionHandling with MethodOverriding - 
+
+If the superclass method does not declare an exception
+	*If the superclass method does not declare an exception, subclass overridden method cannot declare the checked exception but it can declare unchecked exception.
+If the superclass method declares an exception
+	*If the superclass method declares an exception, subclass overridden method can declare same, subclass exception or no exception but cannot declare parent exception.
+If the superclass method does not declare an exception:
+1) Rule: If the superclass method does not declare an exception, subclass overridden method cannot declare the checked exception but can declare unchecked exception.
+
+If the superclass method declares an exception:
+1) Rule: If the superclass method declares an exception, subclass overridden method can declare same, subclass exception or no exception but cannot declare parent exception.
+-----------------------------------------------------------
+Custom Exception:
+
+Create Custom Exception-
+
+class InvalidAgeException extends Exception{  
+ InvalidAgeException(String s){  
+  super(s);  
+ }  
+}  
+
+Use Custom Exception-
+
+class TestCustomException1{  
+  
+   static void validate(int age)throws InvalidAgeException{  
+     if(age<18)  
+      throw new InvalidAgeException("not valid");  
+     else  
+      System.out.println("welcome to vote");  
+   }  
+     
+   public static void main(String args[]){  
+      try{  
+      validate(13);  
+      }catch(Exception m){System.out.println("Exception occured: "+m);}  
+  
+      System.out.println("rest of the code...");  
+  }  
+}  
+-----------------------------------------------------------
+Inner Class - class inside class.##########################
+
+Advantage of java inner classes
+There are basically three advantages of inner classes in java. They are as follows:
+
+1) Nested classes represent a special type of relationship that is it can access all the members (data members and methods) of outer class including private.
+
+2) more readable and maintainable code.
+
+3) Code Optimization.
+
+TestMemberOuter1 obj=new TestMemberOuter1();  
+TestMemberOuter1.Inner in=obj.new Inner();  
+
+Inner class is a part of nested class. Non-static nested classes are known as inner classes.
+
+Types of Nested classes
+There are two types of nested classes non-static and static nested classes.The non-static nested classes are also known as inner classes.
+
+Non-static nested class (inner class)
+
+Member inner class - A class created within class and outside method.
+Anonymous inner class - A class created for implementing interface or extending class. Its name is decided by the java compiler.
+Local inner class - A class created within method.
+Static nested class - A static class created within class.
+-----------------------------------------------------------
+Multithreading -
+---------------------------------
+|	-----------------	 |
+|	|T1       T2	|-------------->Multiple threads inside one process	
+|	|---------------|	 |
+|--------	---------  	 |		 
+|P1	|	|P2	| 	 |
+|------	|	|------	|	 |
+|		 		 |------> OS
+|				 |
+----------------------------------
+
+https://www.youtube.com/watch?v=8e_IvPvr-NY&list=PLhs1urmduZ2_ZFO6vu63QNWTL5XHriWKu
+
+Thread life cycle - https://www.youtube.com/watch?v=PtstYptoClI
+
+How to create and use threads - telusko initial 4 videos
+A thread is a lightweight sub-process, the smallest unit of processing. Multiprocessing and multithreading, both are used to achieve multitasking.
+threads use a shared memory area of particular process.
+
+a thread is executed inside the process. There is context-switching between the threads.
+Note: At a time one thread is executed only.
+
+Thread class - Thread class provides constructors and methods to create and perform operations on a thread. 
+Thread class extends Object class and implements Runnable interface.
+
+Method - start(),run(),sleep(),currentThread(),join(),getPriority(),setPriority(),getName(),setName(),	isAlive()
+
+Thread Pool - https://www.youtube.com/watch?v=qS8lQGdV6_M
+
+Producer consumer problem - 
+Blocking Queue - https://javahungry.blogspot.com/2019/07/producer-consumer-problem.html
+http://java-questions.com/producer-consumer-using-blocking-queue.html
+https://www.youtube.com/watch?v=ytpYIzc9_zU
+
+Wait-notify - https://www.youtube.com/watch?v=J7-JuD5oDK4	
+
+thread synchronization - https://www.youtube.com/watch?v=yj-BWXGruXA
+
+Volatile keyword - https://dzone.com/articles/threads-top-80-interview
+race condition in multithreading - https://dzone.com/articles/threads-top-80-interview
+
+How can you implement your own thread pool in java?
+
+consumer producer problem using BlockingQueue - https://www.javamadesoeasy.com/2015/03/solve-consumer-producer-problem-by.html
+Have you ever generated thread dumps or analyzed Thread Dumps? (Important) - https://www.javamadesoeasy.com/2015/03/jstack-thread-dumps-generating-and.html
+yield() method - https://dzone.com/articles/threads-top-80-interview
+
+Thread interview - https://dzone.com/articles/threads-top-80-interview
+
+Why Wait(), Notify() and NotifyAll() Defined in Object Class not in Thread class?
+https://www.devglan.com/corejava/why-wait-notify-notifyall-defined-in-object-class
+
+Thread Dump - https://www.javamadesoeasy.com/2015/03/jstack-thread-dumps-generating-and.html
+https://www.javamadesoeasy.com/2015/03/visualvm-thread-dumps-generating-and_74.html
+
+CountDownLatch - https://www.youtube.com/watch?v=Jzh3ZQc2kb8
+http://tutorials.jenkov.com/java-util-concurrent/countdownlatch.html
+Synchronization vs Lock - https://www.youtube.com/watch?v=oMAIJ0Z9-9o
+Deadlock - https://www.javatpoint.com/deadlock-in-java
+https://www.youtube.com/watch?v=82IYrX0qdWs
+
+What is difference between Semaphore and Mutex - https://www.youtube.com/watch?v=DvF3AsTglUU
+Semaphores - https://www.youtube.com/watch?v=KxTRsvgqoVQ
+Callable and Future - https://www.youtube.com/watch?v=XkUkLooAJR4
+difference between Callable and Runnable Interface - https://www.youtube.com/watch?v=8fEjTZj1mOM
+
+Why use a ReentrantLock if one can use synchronized(this)?
+https://stackoverflow.com/questions/11821801/why-use-a-reentrantlock-if-one-can-use-synchronizedthis
+In locking mechanism you may aquire lock from different method and unlock it from different method.
+but in case of synchronized, synchronized block must be the part of the same piece of code.
+
+Fairness of locks - The ReentrantLock constructor offers a choice of two fairness option: create a non-fair lock and fair lock.
+With fair locking, thread can aquire locks only in the order in which they were requested,
+whereas a unfair lock allows a lock to aquire it out of its turn. This is called barging (breaking the queue and aquiring the lock when it became available).
+
+Fair locking has a significant performance cost brcause of the overgead of suspending and resuming threads.
+There could be cases where there is a significant delay between when a suspended thread is resumed and when it actually runs.
+
+Print alternate numbers using 2 threads - 
+
+Creating threads using lambda.
+-----------------------------------------------------------
+Reflection API - https://www.youtube.com/watch?v=eKzD-mXrztc&list=PLsyeobzWxl7o86H-sztac_5PjHWpUoafc
+-----------------------------------------------------------
+https://www.javainterviewpoint.com/top-14-core-java-interview-questions-constructors/
+https://javarevisited.blogspot.com/2013/03/can-we-overload-and-override-static-method-java.html
+https://www.geeksforgeeks.org/java-gq/inheritance-2-gq/
+
+Why String Is immutable? - https://www.youtube.com/watch?v=5OXc-TsM3bg
+
+callable statement - https://www.javatpoint.com/CallableStatement-interface
+Batch Processing in JDBC - https://www.javatpoint.com/batch-processing-in-jdbc
+-------------------------------------------------------------------------
+different ways to create an object in java - https://www.youtube.com/watch?v=eKzD-mXrztc
+
+Generics - https://www.youtube.com/watch?v=XMvznsY02Mk&list=PLsyeobzWxl7oJj5BXYF088REBm-K4c_SR&index=2
+
+Concurrent Hashmap - https://www.youtube.com/watch?v=sxyWRSSsGJ4
+Weak Hashmap - https://www.youtube.com/watch?v=r92EAqB5oW4
+equals & hashCode - https://www.youtube.com/watch?v=ghswNpRv2t0
+https://www.youtube.com/watch?v=-H0cHtZSics
+--------------------------------------------------------------------------
+https://www.geeksforgeeks.org/java-interview-questions-constructors/
+https://www.geeksforgeeks.org/output-java-programs-set-48-static-keyword/
+https://www.geeksforgeeks.org/java-gq/inheritance-2-gq/
+https://www.geeksforgeeks.org/output-java-program-set-22-overloading/
+Stack - https://www.youtube.com/watch?v=ux0aQF2mbUk
+An "undo" mechanism in text editors; this operation is accomplished by keeping all text changes in a stack.
+Undo/Redo stacks in Excel or Word.
+Queue - https://www.youtube.com/watch?v=by4uW01l9dM
+https://www.geeksforgeeks.org/queue-interface-java/
+Queue is also used by Operating systems for job scheduling.
+Priority Queue - https://www.youtube.com/watch?v=1mm1I40cniQ
+Finding the closest restaurants/hotels/bathrooms/whatever to a given location. The algorithm to retrieve these from pretty much any spacial data structure uses a priority queue.
+Tree - https://www.youtube.com/watch?v=jaUi-_S6ROI
+sort hashmap keys in java - https://www.youtube.com/watch?v=yKjF38AlbyE
+sort map in javahttps://www.mkyong.com/java/how-to-sort-a-map-in-java/
+TreeMap in reverse order in Java - https://www.geeksforgeeks.org/how-to-create-a-treemap-in-reverse-order-in-java/
+
+How HashMap works in Java? - https://www.youtube.com/watch?v=c3RVW3KGIIE
+How to sort hashmap keys in java? - https://www.youtube.com/watch?v=yKjF38AlbyE
+
+Fail Fast and Fail Safe Iterators in Java - 
+https://www.geeksforgeeks.org/fail-fast-fail-safe-iterators-java/
+
+Collections Class - https://www.youtube.com/watch?v=0Bk2wVsRnoI
+https://www.javatpoint.com/java-collections-class
+
+Different ways - sort a Map in Java
+https://mkyong.com/java/how-to-sort-a-map-in-java/
+
+Vector - https://www.youtube.com/watch?v=4BWmtZQSedU
+Hash set -https://www.youtube.com/watch?v=BeR8AcSu-OU
+https://www.youtube.com/watch?v=m8IBXXrU8YA
+SortedSet  - https://www.youtube.com/watch?v=-PHNCr0rW3A 
+https://www.geeksforgeeks.org/sortedset-java-examples/
+
+TreeSet - https://www.youtube.com/watch?v=dVxiEvKB4JQ
+equals and hashcode - https://www.youtube.com/watch?v=-H0cHtZSics
+
+
+
+
+

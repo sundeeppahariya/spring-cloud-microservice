@@ -1,0 +1,3 @@
+
+Spring Batch Architecture - https://www.youtube.com/watch?v=16bq_N55f_s
+CSV to Database - https://www.youtube.com/watch?v=1XEX-u12i0A

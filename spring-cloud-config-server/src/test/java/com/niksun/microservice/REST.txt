@@ -1,0 +1,15 @@
+REST - Representation State Transfer
+REST is just a concept. Jersy is the actual implementation.
+
+Difference b/w Path param and Query Param ?
+https://stackoverflow.com/questions/11552248/when-to-use-queryparam-vs-pathparam
+
+json over xml
+
+Upload File - https://www.youtube.com/watch?v=yr01OEk6FfM
+Download file - https://www.youtube.com/watch?v=0kxae9K3Frs
+
+
+https://www.youtube.com/watch?v=aMXLFS9j4Uo
+
+http methods - https://www.javatpoint.com/http-methods

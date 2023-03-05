@@ -1,0 +1,39 @@
+Spring MVC -
+
+Front Controller or Dispatcher Servlet
+
+Difference b/w Normal MVC and Spring MVC - 
+In normal  mvc, for every purpose we have seperate controller and we need to have knowledge, when to use what.
+But in spring mvc, there is a front controller which routes the request to corresponding/particular controller.
+
+To teach Front Controller or Dispatcher Servlet, where to send the request, we need to create a xml file - {servlet name}-servlet.xml
+and in thiis file, we need to provide the entry-which package to scan for annotations.
+<context:component-scan base-package="com.mkyong.customer" />
+
+Note: if you don't want to have such kind of file then use annotation.
+Steps : 1. create a class, ex: TemplateConfig.java
+	@Configuration
+	@ComponentScan({"com.genpact"})
+	public class TemplateConfig.java{	
+
+		/**
+		* If you want to make your pages secure (can't be accessible directly) then place them in WEB-INF folder
+		* and only jsp would be supported
+		*/
+		@Bean
+		public InternalResourceViewResolver viewResolver(){
+			InternalResourceViewResolver vr = new InternalResourceViewResolver ();
+			vr.setPrefix("/WEB-INF");
+			vr.setSuffix(".jsp");
+			return vr;
+		}	
+	}
+
+Annotations - 
+@Controller - on top of class, which you want to behave as controller
+@RequestMapping - on top of method, to serve
+
+ModelAndView- 
+ModelAndView mv = new ModelAndView();
+mv.addObject("{label name}",{actual result});
+mv.setViewName("{view name}");

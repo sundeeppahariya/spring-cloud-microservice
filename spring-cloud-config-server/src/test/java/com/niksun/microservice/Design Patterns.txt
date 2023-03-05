@@ -1,0 +1,125 @@
+Design Patterns
+------------------------- -----------------------------------------------------------------------------------------------------
+Creational 		  Factory,Singleton,Prototype,Builder,Adapter,Decorator,Facade,Iterator,Observer & Spring MVC.
+------------------------- -----------------------------------------------------------------------------------------------------
+Factory Pattern													
+Abstract Factory Pattern
+Singleton Pattern
+Prototype Pattern
+Builder Pattern
+-------------------------
+Structural
+-------------------------
+Adapter Pattern
+Bridge Pattern
+Composite Pattern
+Decorator Pattern
+Facade Pattern
+Flyweight Pattern
+Proxy Pattern
+-------------------------
+Behavioural
+-------------------------
+Chain Of Responsibility Pattern
+Command Pattern
+Interpreter Pattern
+Iterator Pattern
+Mediator Pattern
+Memento Pattern
+Observer Pattern
+State Pattern
+Strategy Pattern
+Template Pattern
+Visitor Pattern
+-------------------------
+Singleton and Factory : https://www.youtube.com/watch?v=-OFO7CexSII
+https://www.youtube.com/watch?v=KUTqnWswPV4
+Some examples:
+Singleton pattern is used for logging, drivers objects, caching and thread pool.
+Database connections
+Config files
+
+Singleton - 
+
+Lazy Instantiation - https://www.youtube.com/watch?v=CYMoiJ8d1Us
+Synchronized getInstance - https://www.youtube.com/watch?v=wRMNQH5tgKw
+Double Checked Locking  - https://www.youtube.com/watch?v=yvwIZzur-lw
+https://www.youtube.com/watch?v=Z5TRputhzHs
+Singleton Design Pattern using enum INSTANCE - https://www.youtube.com/watch?v=YOi5i-93lgo
+
+Prototype Pattern : https://www.youtube.com/watch?v=nZ76x13Nm8Q&list=PLsyeobzWxl7r2ZX1fl-7CKnayxHJA_1ol&index=10
+https://www.youtube.com/watch?v=Zcs0OXj4JCA
+Beneficial in Bank based transaction where we have expensive database queries. Caching might help and prototype pattern is the best answer to this situation as copy of the object having bank account information or user profile information can be used, perform transaction on it and then replace the original object with the modified one.
+
+Factory : https://www.youtube.com/watch?v=pt1IbV1aSZ4
+-Consider an example of using multiple database servers like SQL Server and Oracle. If you are developing an application using SQL Server database as backend, but in future need to change backend database to oracle, you will need to modify all your code, if you haven’t written your code following factory design pattern.
+-java.util.Calendar, ResourceBundle and NumberFormat getInstance() methods uses Factory pattern.
+
+Abstract Factory Pattern : https://www.youtube.com/watch?v=cvqyJvVjxj4
+			   https://www.youtube.com/watch?v=Bbjh8atQJz0
+
+Builder Pattern : https://www.youtube.com/watch?v=KbIdk5BRn0w&list=PLsyeobzWxl7r2ZX1fl-7CKnayxHJA_1ol&index=4
+		  https://www.youtube.com/watch?v=k4EkJgY9P4c&list=PLsyeobzWxl7r2ZX1fl-7CKnayxHJA_1ol&index=5
+
+Builder pattern was introduced to solve some of the problems with Factory and Abstract Factory design patterns when the Object contains a lot of attributes.
+There are three major issues with Factory and Abstract Factory design patterns when the Object contains a lot of attributes.
+
+Too Many arguments to pass from client program to the Factory class that can be error prone because most of the time, the type of arguments are same and from client side its hard to maintain the order of the argument.
+Some of the parameters might be optional but in Factory pattern, we are forced to send all the parameters and optional parameters need to send as NULL.
+If the object is heavy and its creation is complex, then all that complexity will be part of Factory classes that is confusing.
+-------------------------
+Adapter Pattern : Real time example - 
+-HR salary system (send string array of employees) and third part who process employees salary (accepts list of employees)
+-Database drivers behaves as adapter b/w Java program and Oracle/MYSQL/MSSQL...databases
+-If A system send message in format 'x' and system B understands only format 'y' then this design pattern is used
+
+https://www.youtube.com/watch?v=YYC8_HOAFKY&list=PLmCsXDGbJHdjX4WzDCwIT93UZrwTFKP23
+https://www.youtube.com/watch?v=H5CzB2SXOHQ&list=PLmCsXDGbJHdjX4WzDCwIT93UZrwTFKP23&index=6
+https://www.youtube.com/watch?v=JF4Ul_Mb6xs&list=PLmCsXDGbJHdjX4WzDCwIT93UZrwTFKP23&index=14
+
+Facade Pattern : https://www.youtube.com/watch?v=dLjJo2v2re8
+
+Try to understand the scenario with and without Façade:
+If you want to transfer the money from accout1 to account2 then the two complex subsystems to be invoked(from client) are, withdraw from account1 and deposit to account2.
+
+client	class 1	class 2
+|------->|	|
+|<-------|	|
+|	 |	|
+|		|
+|-------------->|
+|<--------------|
+
+if facade pattern is applied 
+
+client	Facade	class 1	class 2
+|------->|----->|	|	
+|<-------|<-----|	|
+|	 |	|	|
+|	 |	|	|
+|	 |		|
+|	 |------------->|
+|	 |<-------------|
+
+Decorator Pattern - https://www.youtube.com/watch?v=CgRhHjVO3d0 
+Decorator design pattern is used to modify the functionality of an object at runtime. At the same time other instances of the same class will not be affected by this.
+
+Ex: Consider a case of a pizza shop. In the pizza shop they will sell few pizza varieties and they will also provide toppings in the menu. Now imagine a situation wherein if the pizza shop has to provide prices for each combination of pizza and topping. Even if there are four basic pizzas and 8 different toppings, the application would go crazy maintaining all these concrete combination of pizzas and toppings.
+
+Here comes the decorator pattern.
+
+As per the decorator pattern, you will implement toppings as decorators and pizzas will be decorated by those toppings' decorators. Practically each customer would want toppings of his desire and final bill-amount will be composed of the base pizzas and additionally ordered toppings. Each topping decorator would know about the pizzas that it is decorating and it's price. GetPrice() method of Topping object would return cumulative price of both pizza and the topping.
+
+Iterator Pattern - https://www.youtube.com/watch?v=Pganyj1dVVU
+		   https://www.youtube.com/watch?v=uRiKSJAnmeA
+
+Observer Pattern - Observer design pattern is useful when you are interested in the state of an object and want to get notified whenever there is any change. In observer pattern, the object that watch on the state of another object are called Observer and the object that is being watched is called Subject.
+
+Subject contains a list of observers to notify of any change in it’s state, so it should provide methods using which observers can register and unregister themselves. Subject also contain a method to notify all the observers of any change and either it can send the update while notifying the observer or it can provide another method to get the update.
+
+Observer should have a method to set the object to watch and another method that will be used by Subject to notify them of any updates.
+
+Ex: Filpkart - notify when product is available
+https://www.youtube.com/watch?v=hb2iv-UjfJs
+https://howtodoinjava.com/design-patterns/behavioral/observer-design-pattern/
+https://www.tutorialspoint.com/design_pattern/observer_pattern.htm

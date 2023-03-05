@@ -1,0 +1,11 @@
+Microservice Tutorial - https://www.youtube.com/watch?v=y8IQb4ofjDo&list=PLqq-6Pq4lTTZSKAFG6aCDVDP86Qx4lNas&index=1
+
+Interview Question - https://www.youtube.com/watch?v=G0waumbpK48
+		     https://www.youtube.com/watch?v=OllwpWzy5Ug
+
+Deploy microservices Docker - https://www.javainuse.com/devOps/docker/docker-networking
+
+Difference b/w Microservice & Web Service -
+In Web Service you don't know where it is going to be used. We expose it as an utility - based on Service Oriented Architecture.
+Ex-ip locator, which is deployed some where as an utility, consumers call this service and it reurns the location of that ip.
+where as in microservices, you know very well, where it is going to be used.-like amazon/flipkart or book my show.
