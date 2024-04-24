@@ -1,0 +1,19 @@
+https://www.youtube.com/watch?v=QRwG9X9l6xI&list=PLsyeobzWxl7qbvNnJKjYbkTLn2w3eRy1Q
+
+Lambda Expression - https://www.youtube.com/watch?v=lIXs4Y8sJCk
+https://www.youtube.com/watch?v=yb46iD5dJYY&list=PLsyeobzWxl7qbvNnJKjYbkTLn2w3eRy1Q&index=6
+
+ForEach Method in Java 8 - in java 8 forEach loop is internal loop so it works faster than external for loop (older way to declare for loop)
+https://www.youtube.com/watch?v=axTQD_Cirnw&list=PLsyeobzWxl7qbvNnJKjYbkTLn2w3eRy1Q&index=4
+
+Functional Interface - https://www.youtube.com/watch?v=GxZWMgpMuLs
+
+consumer-interface : https://www.geeksforgeeks.org/java-8-consumer-interface-in-java-with-examples/
+
+stream api : https://www.geeksforgeeks.org/stream-in-java/
+
+How Parallel Stream works? - https://www.youtube.com/watch?v=s2WpigBSS84
+
+Abstract Class vs. Interface in Java 8 - https://www.youtube.com/watch?v=nsZb0FctHJ4
+
+Java external vs internal iterator - http://zetcode.com/java/externalinternaliterator/

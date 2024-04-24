@@ -1,0 +1,169 @@
+Spring interview - https://www.edureka.co/blog/interview-questions/spring-interview-questions/
+
+
+Dependency Injection - Dependency is not hardcoded in the class.
+its actually injected by the entity outside the class.
+
+Spring Container - manages the life cycle of the objects.
+Spring Bean Factory reads the configuration file (Spring.xml) and creates the object.
+##########-----SYNTAX-----########## BeanFacrory factory = new XmlBeanFacrory(new ClassPathResource("spring.xml");
+
+Application Context - It is big brother of Spring Bean Factory. It performs everything what Bean Factory does.
+and performs additional functionality, like - AOP, event notification.
+##########-----SYNTAX-----########## ApplicationContext context = new ClassPathXmlApplicationContext("spring.xml");
+
+Bean declaration in spring.xml and define property tag.
+
+Constructor and Setter Injection and their syntax and difference between them.
+
+Injecting Objects with ref tag.
+
+Aliases is the way to give the different name to  same bean. --> WHY ?
+Answer - A use case maybe when you want to customize some beans that are already defined somewhere in a modular application (each module is a spring project for example), the bean maybe defined by a third-party framework/API or even your team. In that case you want that only inside your spring project call the customized version without altering other modules (projects), to do that just add the alias in your spring configuration which is indeed a powerful feature:
+
+<alias alias="globalBeanService" name="customizedBeanService" />
+##########-----SYNTAX-----##########
+
+Bean Autowiring and its type ?
+
+Bean Scope - By default all the objects (for all the classes, defined in the spring.xml) will be created with default initialization,
+when application context is initialized.
+Singleton - Only once per spring container.---->Default is singleton
+Prototype - new bean is created for every request or every reference.
+Request - New bean for every servlet request.
+Session - New bean per session.
+Global session
+
+Difference between Singleton in Java and Singleton in Spring -
+In java singleton means, same object overall. but in spring singleton means same object in same container.
+in spring multiple container can run on same JVMs.
+
+Application Context Aware - if need to use Application Context some where else then class implements this Application Context Aware interface.
+Ex : if bean scope is singleton and dependencies defined inside that is prototype then in this case singleton bean (java class) will 
+implements this Application Context Aware interface.
+
+Bean Name Aware interface : if want to know, that which bean is configured in spring.xml.
+##########-----SYNTAX-----##########
+Bean Definition Inheritance : If we want to set the common property in all the bean then we use bean definition inheritance.
+##########-----SYNTAX-----##########
+
+Abstract Application Context : to close the application context, we use Abstract Application Context.
+Which register the shutdown hook. So when the main method ends then this shutdown hook is called.
+context.registerShutdownHook();
+
+Call Back Method : if want to perform some activity when bean is initialized and destroyed then implements InitializingBean (method-afterPropertySet()-it will called before any property set)
+Disposable Bean(method-destroy()-any cleanup code) 
+
+above Call Back Methods are tied to Spring. Suppose I don't want to use these interfaces then define simple 2 init and destroy methods in your class 
+and in spring.xml type init-method and destroy-method and give the names of defined method.
+
+Bean Post Processor : it tells spring to do something after every bean initialization.
+Ex : we can achieve configuration related coding using this.
+
+Bean Factory Post Processor : when want to perform something when Bean Factory itself initialized.
+Ex : PropertyPlaceholderConfigurer.
+
+Annotations : shortcut and alternative way to defining bean. no need to define beans in spring.xml.
+Required : in order to tell spring that this is the required dependency.(@Required on setter)
+
+Autowired : it is same as the @Required annotation.
+##########-----DIFFERENCE BETWEEN Required & Autowired Annotations-----##########
+@Autowired annotation is used when you want to autowire a bean.
+@Autowired is not limited to the setter. It can be used with a constructor and field as well.
+If you use @Autowired annotation on a field, that field will be autowired with bean having machine data type.
+
+@Required checks if a particular property has been set or not.
+If a field has been annotated with @Required annotation and that filed is not set. you will get org.springframework.beans.factory.BeanInitializationException.
+
+Qualifier : Qualifier is the something that we can mention in the bean definition to say that this bean actually Circle (ex) related bean.
+
+JSR-250 Annotations : Java Specification Request, that defines all the standard annotations, which would apply to all the technologies and all the frameworks.
+
+@Resource : same as @Autowired, but this is Java specific not spring specific.
+@PostConstruct : same as bean post processor init() method.
+@PreDestroy : same as bean post processor destroy() method.
+
+@Component : its a generic bean. when needs to tell spring that which particular class will behave as bean and which will not.
+in this case, we don't even need to  define bean in spring.xml file.
+
+Advantage of spring.xml file over Annotations : if we want to use the same bean with different metadata (property) then we can define the same bean with different name and metadata. but if we use @Component annotation over the class then its not possible.
+
+Stereotype Annotations : in MVC every layer has its own typical role.
+So, just to tell spring to define the particular bean to perform that role.
+@Controller, @Service, @Repository. - level of documentation.
+
+##########-----Read message from property file-----##########
+
+AOP : ##########-----READ THEORY FROM GOOGLE-----##########
+@Aspect : Class level annotation to make any class behave as Aspect.
+Need to define class (behaving as aspect) in spring.xml.
+
+PointCut : the methods, on which methods we need to run the advice, is called PointCut.
+Ex : @PointCut ("execution(* get*(*))")
+	 public void allGetters(){}
+
+WildCards : if one advice needs to run on different methods (cuts) - the way to do that is using WildCards.
+Ex : public String getName() ----> public String get*() or public * get*() or 
+* get*(*) -- if method has argument.
+* get*(..) -- advice wil apply, does not matter,whether method has argument or not.
+
+Join Point : Join Point has information, which method actually called the advice (Ex : get() or set())
+@Before
+@After
+@Around
+
+Spring Data Support : 
+Steps in JDBC : 1. Create/Establish Connection
+		2. Create Query
+		3. Execute Query
+		4. Get Data from result set
+		5. Close Connection
+
+Spring provide an interface an some classes which implement this interface.
+and using that interface, we can configure our connection object. 
+
+Row mapper : row mapper is a interface that has a articular call back method that takes care of the mapping, the output of result set to object.
+Ex : circleId is the id of the circle and 
+circleName is the name of the circle.
+Row mapper method takes 2 arguments - (1) ResultSet Object and int rowNum (where rowNum is the count of total no. of records).
+so that resultSet will loop that many times.
+--------------------------------------------------------------------------------------------------------------------------------------------------
+Que: How to use values from properties file in application context ?
+Ans: http://www.java2novice.com/spring/read-property-file-xml-config/
+
+Bean Life Cycle - https://www.youtube.com/watch?v=0t2wtPZxVuU
+Spring container instantiates the bean from the bean’s definition in the XML file.
+Dependency Injection
+set Application context name
+set Bean name
+Bean factory post processor-before initialization
+Bean Service
+Bean factory post processor-after initialization
+Destroy
+
+
+Que: How to load multiple Spring bean configuration file?
+Ans: https://www.mkyong.com/spring/load-multiple-spring-bean-configuration-file/
+
+File : Spring-All-Module.xml
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+
+	<import resource="common/Spring-Common.xml"/>
+        <import resource="connection/Spring-Connection.xml"/>
+        <import resource="moduleA/Spring-ModuleA.xml"/>
+	
+</beans>
+
+Now you can load a single xml file like this :
+
+ApplicationContext context = new ClassPathXmlApplicationContext(Spring-All-Module.xml);
+
+Que: Difference between @bean and @component ?
+Ans: https://www.youtube.com/watch?v=imLEO5bTQWY
+
+@Component (and @Service and @Repository) are used to auto-detect and auto-configure beans using classpath scanning. 
+@Bean is used to explicitly declare a single bean, rather than letting Spring do it automatically as above. 
+Spring Boot - @Component, @Service, @Repository, @Configuration, @Bean, @Controller, @RestController - https://www.youtube.com/watch?v=z2re1MfWtz0
